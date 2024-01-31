@@ -28,13 +28,16 @@ date_selection = st.sidebar.date_input(
     max_value=data['Date'].max()
 )
 
-# Handling single date selection and date range selection
-if not isinstance(date_selection, tuple):
-    # If only one date is selected, create a tuple with the same start and end date
-    date_selection = (date_selection, date_selection)
-
-# Now, safely unpack the date_selection tuple
-selected_start_date, selected_end_date = date_selection
+# Check if date_selection is a single date or a range
+if isinstance(date_selection, tuple):
+    # If a range of dates is selected
+    selected_start_date, selected_end_date = date_selection
+elif isinstance(date_selection, date):
+    # If only one date is selected, use it for both start and end
+    selected_start_date = selected_end_date = date_selection
+else:
+    # Handle unexpected types (unlikely, but for robustness)
+    raise ValueError("Invalid date selection type.")
 
 # Update button
 if st.sidebar.button('Update'):
