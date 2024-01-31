@@ -34,4 +34,9 @@ ax.plot(data_filtered['Date'], data_filtered[selected_metric], marker='o')
 ax.set_xlabel('Date')
 ax.set_ylabel(selected_metric)
 ax.grid(True)
+ax.xaxis.set_major_locator(mdates.DayLocator(interval=7))
+ax.xaxis.set_major_formatter(mdates.DateFormatter('%d %b'))
 st.pyplot(fig)
+
+
+
