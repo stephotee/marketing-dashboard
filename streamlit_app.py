@@ -29,12 +29,12 @@ date_selection = st.sidebar.date_input(
 )
 
 # Handling single date selection and date range selection
-if isinstance(date_selection, tuple):
-    # If a range of dates is selected
-    selected_start_date, selected_end_date = date_selection
-else:
-    # If only one date is selected
-    selected_start_date = selected_end_date = date_selection
+if not isinstance(date_selection, tuple):
+    # If only one date is selected, create a tuple with the same start and end date
+    date_selection = (date_selection, date_selection)
+
+# Now, safely unpack the date_selection tuple
+selected_start_date, selected_end_date = date_selection
 
 # Update button
 if st.sidebar.button('Update'):
