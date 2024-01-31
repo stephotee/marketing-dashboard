@@ -58,7 +58,7 @@ if st.sidebar.button('Update'):
   # Facebook Reach Chart
     st.subheader('Facebook paid reach')
     fig, ax = plt.subplots()
-    ax.plot(data_filtered['Date'], data_filtered['Facebook paid reach'], marker='o')
+    ax.plot(data_filtered['Date'], data_filtered['Facebook paid reach'], marker='o', color='blue')
     set_dynamic_y_limit(ax, data_filtered['Facebook paid reach'])
     ax.set_xlabel('Date')
     ax.set_ylabel('Facebook paid reach')
@@ -70,7 +70,7 @@ if st.sidebar.button('Update'):
   # Transactions Chart
     st.subheader('Transactions')
     fig, ax = plt.subplots()
-    ax.plot(data_filtered['Date'], data_filtered['Transactions'], marker='o')
+    ax.bar(data_filtered['Date'], data_filtered['Transactions'], marker='o', color='green')
     set_dynamic_y_limit(ax, data_filtered['Transactions'])
     ax.set_xlabel('Date')
     ax.set_ylabel('Transactions')
@@ -82,7 +82,7 @@ if st.sidebar.button('Update'):
   # Conversion rate Chart
     st.subheader('Conversion rate')
     fig, ax = plt.subplots()
-    ax.plot(data_filtered['Date'], data_filtered['Conversion rate'], marker='o')
+    ax.plot(data_filtered['Date'], data_filtered['Conversion rate'], marker='o', color='yellow')
     set_dynamic_y_limit(ax, data_filtered['Conversion rate'])
     ax.set_xlabel('Date')
     ax.set_ylabel('Conversion rate')
