@@ -16,7 +16,7 @@ data = load_data()
 
 # Sidebar - Country selection
 country_list = data['Country'].unique()
-selected_country = st.sidebar.selectbox('Country', country_list, country_list)
+selected_country = st.sidebar.multiselect('Country', country_list, country_list)
 
 # Filtering data
 if selected_country:
