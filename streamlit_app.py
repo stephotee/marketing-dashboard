@@ -55,6 +55,44 @@ if st.sidebar.button('Update'):
     ax.xaxis.set_major_formatter(mdates.DateFormatter('%d %b'))
     st.pyplot(fig)
 
+  # Facebook Reach Chart
+    st.subheader('Facebook paid reach')
+    fig, ax = plt.subplots()
+    ax.plot(data_filtered['Date'], data_filtered['Facebook paid reach'], marker='o')
+    set_dynamic_y_limit(ax, data_filtered['Facebook paid reach'])
+    ax.set_xlabel('Date')
+    ax.set_ylabel('Facebook paid reach')
+    ax.grid(True)
+    ax.xaxis.set_major_locator(mdates.DayLocator(interval=7))
+    ax.xaxis.set_major_formatter(mdates.DateFormatter('%d %b'))
+    st.pyplot(fig)
+
+  # Transactions Chart
+    st.subheader('Transactions')
+    fig, ax = plt.subplots()
+    ax.plot(data_filtered['Date'], data_filtered['Transactions'], marker='o')
+    set_dynamic_y_limit(ax, data_filtered['Transactions'])
+    ax.set_xlabel('Date')
+    ax.set_ylabel('Transactions')
+    ax.grid(True)
+    ax.xaxis.set_major_locator(mdates.DayLocator(interval=7))
+    ax.xaxis.set_major_formatter(mdates.DateFormatter('%d %b'))
+    st.pyplot(fig)
+
+  # Conversion rate Chart
+    st.subheader('Conversion rate')
+    fig, ax = plt.subplots()
+    ax.plot(data_filtered['Date'], data_filtered['Conversion rate'], marker='o')
+    set_dynamic_y_limit(ax, data_filtered['Conversion rate'])
+    ax.set_xlabel('Date')
+    ax.set_ylabel('Conversion rate')
+    ax.grid(True)
+    ax.xaxis.set_major_locator(mdates.DayLocator(interval=7))
+    ax.xaxis.set_major_formatter(mdates.DateFormatter('%d %b'))
+    st.pyplot(fig)
+
+
+
     # Repeat for other charts (Facebook Reach, Transactions, Conversion Rate)...
     # Make sure to use set_dynamic_y_limit for each chart
 
