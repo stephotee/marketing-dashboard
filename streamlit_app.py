@@ -28,10 +28,12 @@ date_selection = st.sidebar.date_input(
     max_value=data['Date'].max()
 )
 
-# Ensure that date_selection is always a range
+# Handling single date selection and date range selection
 if isinstance(date_selection, tuple):
+    # If a range of dates is selected
     selected_start_date, selected_end_date = date_selection
 else:
+    # If only one date is selected
     selected_start_date = selected_end_date = date_selection
 
 # Update button
