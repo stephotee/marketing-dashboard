@@ -34,6 +34,7 @@ fig, ax = plt.subplots()
 ax.plot(data_filtered['Date'], data_filtered['Website visits'], marker='o')
 ax.set_xlabel('Date')
 ax.set_ylabel('Website Visits')
+ax.set_ylim(bottom=0)
 ax.grid(True)
 ax.xaxis.set_major_locator(mdates.DayLocator(interval=7))  # Set major ticks to show every 7 days
 ax.xaxis.set_major_formatter(mdates.DateFormatter('%d %b'))  # Set the display format for dates
