@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
+import matplotlib.dates as mdates
+
 
 # Function to load data
 @st.cache
@@ -16,7 +18,7 @@ data = load_data()
 
 # Sidebar - Country selection
 country_list = data['Country'].unique()
-selected_country = st.sidebar.multiselect('Country', country_list, country_list)
+selected_country = st.sidebar.selectbox('Country', country_list)
 
 # Filtering data
 if selected_country:
@@ -34,6 +36,8 @@ ax.plot(data_filtered['Date'], data_filtered['Website visits'], marker='o')
 ax.set_xlabel('Date')
 ax.set_ylabel('Website Visits')
 ax.grid(True)
+ax.xaxis.set_major_locator(mdates.DayLocator(interval=7))  # Set major ticks to show every 7 days
+ax.xaxis.set_major_formatter(mdates.DateFormatter('%d %b'))  # Set the display format for dates
 st.pyplot(fig)
 
 # Facebook Reach Chart
