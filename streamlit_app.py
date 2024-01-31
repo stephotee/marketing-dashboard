@@ -22,9 +22,8 @@ selected_country = st.sidebar.selectbox('Country', country_list)
 
 # Filtering data
 if selected_country:
-    data_filtered = data[data['Country'].isin(selected_country)]
-else:
-    data_filtered = data
+    data_filtered = data[data['Country'] == selected_country]
+
 
 # Main Dashboard
 st.title('Marketing Campaign Dashboard')
