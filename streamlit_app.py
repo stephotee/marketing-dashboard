@@ -70,7 +70,7 @@ if st.sidebar.button('Update'):
   # Transactions Chart
     st.subheader('Transactions')
     fig, ax = plt.subplots()
-    ax.bar(data_filtered['Date'], data_filtered['Transactions'], marker='o', color='green')
+    ax.bar(data_filtered['Date'], data_filtered['Transactions'], color='green')
     set_dynamic_y_limit(ax, data_filtered['Transactions'])
     ax.set_xlabel('Date')
     ax.set_ylabel('Transactions')
