@@ -21,12 +21,25 @@ country_list = data['Country'].unique()
 selected_country = st.sidebar.selectbox('Country', country_list)
 
 # Sidebar - Date selection
-selected_start_date, selected_end_date = st.sidebar.date_input(
+date_selection = st.sidebar.date_input(
     "Select date range",
     value=(data['Date'].min(), data['Date'].max()),
     min_value=data['Date'].min(),
     max_value=data['Date'].max()
 )
+
+# Ensure that the date_selection is always a tuple (start_date, end_date)
+if isinstance(date_selection, tuple):
+    selected_start_date, selected_end_date = date_selection
+else:
+    selected_start_date = selected_end_date = date_selection
+
+# Update button
+if st.sidebar.button('Update'):
+    # Filtering data based on the selection
+    data_filtered = data[(data['Country'] == selected_country) & 
+                         (data['Date'] >= pd.to_datetime(selected_start_date)) & 
+                         (data['Date'] <= pd.to_datetime(selected_end_date))]
 
 # Update button
 if st.sidebar.button('Update'):
