@@ -46,6 +46,7 @@ fig, ax = plt.subplots()
 ax.plot(data_filtered['Date'], data_filtered['Facebook paid reach'], marker='o', color='blue')
 ax.set_xlabel('Date')
 ax.set_ylabel('Facebook Reach')
+ax.set_ylim(bottom=0)
 ax.grid(True)
 ax.xaxis.set_major_locator(mdates.DayLocator(interval=7))  # Set major ticks to show every 7 days
 ax.xaxis.set_major_formatter(mdates.DateFormatter('%d %b'))  # Set the display format for dates
@@ -57,6 +58,7 @@ fig, ax = plt.subplots()
 ax.bar(data_filtered['Date'], data_filtered['Transactions'], color='green')
 ax.set_xlabel('Date')
 ax.set_ylabel('Transactions')
+ax.set_ylim(bottom=0)
 ax.grid(True)
 ax.xaxis.set_major_locator(mdates.DayLocator(interval=7))  # Set major ticks to show every 7 days
 ax.xaxis.set_major_formatter(mdates.DateFormatter('%d %b'))  # Set the display format for dates
@@ -68,6 +70,7 @@ fig, ax = plt.subplots()
 ax.plot(data_filtered['Date'], data_filtered['Conversion rate'], marker='o', color='orange')
 ax.set_xlabel('Date')
 ax.set_ylabel('Conversion Rate')
+ax.set_ylim(bottom=0)
 ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda y, _: '{:.0%}'.format(y)))
 ax.grid(True)
 ax.xaxis.set_major_locator(mdates.DayLocator(interval=7))  # Set major ticks to show every 7 days
