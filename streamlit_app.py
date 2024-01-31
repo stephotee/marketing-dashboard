@@ -28,7 +28,7 @@ date_selection = st.sidebar.date_input(
     max_value=data['Date'].max()
 )
 
-# Ensure that the date_selection is always a tuple (start_date, end_date)
+# Ensure that date_selection is always a range
 if isinstance(date_selection, tuple):
     selected_start_date, selected_end_date = date_selection
 else:
@@ -60,3 +60,5 @@ if st.sidebar.button('Update'):
     ax.xaxis.set_major_locator(mdates.DayLocator(interval=7))
     ax.xaxis.set_major_formatter(mdates.DateFormatter('%d %b'))
     st.pyplot(fig)
+
+    # ... code for other charts ...
