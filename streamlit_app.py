@@ -4,6 +4,18 @@ import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 from datetime import date
 
+# Function to load data
+@st.cache
+def load_data():
+    data = pd.read_csv('dashboard_sample_data.csv')
+    data['Date'] = pd.to_datetime(data['Date'], format='%d/%m/%y')
+    # Convert 'Conversion rate' to float after stripping the '%' character
+    data['Conversion rate'] = data['Conversion rate'].str.rstrip('%').astype('float') / 100.0
+    return data
+
+# Load data
+data = load_data()
+
 # Assuming your data has a 'Date' column of datetime type
 min_date = data['Date'].min()
 max_date = data['Date'].max()
