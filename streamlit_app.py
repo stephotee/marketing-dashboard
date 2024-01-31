@@ -2,6 +2,11 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
+from datetime import date
+
+# Assuming your data has a 'Date' column of datetime type
+min_date = data['Date'].min()
+max_date = data['Date'].max()
 
 
 # Function to load data
@@ -20,9 +25,22 @@ data = load_data()
 country_list = data['Country'].unique()
 selected_country = st.sidebar.selectbox('Country', country_list)
 
+# Sidebar - Date selection
+selected_start_date, selected_end_date = st.sidebar.date_input(
+    "Select date range",
+    value=(min_date, max_date),
+    min_value=min_date,
+    max_value=max_date
+)
+
 # Filtering data
 if selected_country:
     data_filtered = data[data['Country'] == selected_country]
+
+data_filtered = data_filtered[
+    (data_filtered['Date'] >= pd.to_datetime(selected_start_date)) &
+    (data_filtered['Date'] <= pd.to_datetime(selected_end_date))
+]
 
 
 # Main Dashboard
